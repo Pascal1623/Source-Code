@@ -1,0 +1,78 @@
+<style type="text/css">
+  BODY       { font-family: 돋음,굴림; font-size: 12px; color: black }
+  TD         { font-family: 돋음,굴림; font-size: 12px; color: black; line-height: 160%}
+  a          { font-family: 돋음,굴림; font-size: 12px; color: black; text-decoration: none}
+  a:active   { font-family: 돋음,굴림; font-size: 12px; color: #FF3333; text-decoration: none}
+  A:hover    { text-decoration ; color:#ff9999} 
+.font1 {  font-size: 11px; color: #333333; font-family: "Geneva", "Arial", "Helvetica", "san-serif"}
+</style>
+<script language="JavaScript">
+
+    function check(from)
+    {
+	if (from.writer.value=="")
+	{
+		alert ("글쓴이를 입력해 주십시오.");
+		return;
+	}
+	if (from.title.value=="")
+	{
+		alert ("제목을 입력해 주십시오.");
+		return;
+	}
+	if (from.pwd.value=="")
+	{
+		alert("Password를 입력해 주십시오.");
+		return;
+	}
+	from.submit();
+    }
+</script>
+
+------------------------------------------------------------------------------------------
+
+<?php
+
+	$conn=mysql_connect("localhost", "root", "apmsetup");
+	mysql_select_db("webdb", $conn);
+	mysql_query("set names euckr");
+
+/*	include("include.inc");  */
+
+	if ($mode=="reply")
+	{
+		$reply_query="select title, content from board where num=".$num;
+		$reply_result=mysql_query($reply_query, $conn);
+		$list=mysql_fetch_array($reply_result);
+	}
+
+	if ($mode=="update")
+	{
+		$update_query="select writer, email, title, content from board where num=".$num;
+		$update_result=mysql_query($update_query, $conn);
+		$list=mysql_fetch_array($update_result);
+	}
+?>
+	<br><br>
+
+----------------------------------
+
+
+?mode=<?php print $mode ?>
+-----------------------------------------------
+
+
+<?php 
+	if ($mode=="reply")
+	{
+		print "<input type=hidden name=num value=".$num.">";
+		print "<input type=hidden name=page value=".$page.">";
+	}
+
+	if ($mode=="update")
+	{
+		print "<input type=hidden name=num value=".$num.">";
+		print "<input type=hidden name=page value=".$page.">";
+	}
+?>
+

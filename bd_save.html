@@ -1,0 +1,149 @@
+<?php
+	include("include.inc");
+
+	$board_save_dir="./upload/........ 서버에 upload할 폴더 정의";
+
+		if ($mode=="insert")
+	{
+		$max_num_query="select max(num) as tnum from board";
+		$max_num_result=mysql_query($max_num_query, $conn);
+		$max_num_list=mysql_fetch_array($max_num_result);
+		$num=$max_num_list["tnum"]+1;
+
+		$max_root_query="select max(root) as troot from board";
+		$max_root_result=mysql_query($max_root_query, $conn);
+		$max_root_list=mysql_fetch_array($max_root_result);
+		$root=$max_root_list["troot"]+1;
+
+		if($addfile_name!="")
+		{
+			if(upload_file($board_save_dir, $addfile, $addfile_name, $num))
+			{
+				$query="insert into board(num, root, reply, title, email, content, writer, password, filename, wdate, wtime, connect_ip, count) values (".$num.", ".$root.", 0, '".$title."', '".$email."', '".$content."', '".$writer."', '".$pwd."', '".$addfile_name."', now(), now(), '".getenv("REMOTE_ADDR")."', 0)";
+
+				$query_res=mysql_query($query, $conn);
+			}
+		}
+		else
+		{
+			$query="insert into board (num, root, reply, title, email, content, writer, password, filename, wdate, wtime, connect_ip, count) values (".$num.", ".$root.", 0, '".$title."', '".$email."', '".$content."', '".$writer."', '".$pwd."', '', now(), now(), '".getenv("REMOTE_ADDR")."', 0)";
+
+			$query_res=mysql_query($query, $conn);
+		}
+	}
+	elseif ($mode=="reply")
+	{
+		$question_num=$num;
+		
+		$question_info_query="select num, root, reply from board where num=".$question_num;
+		$question_info_result=mysql_query($question_info_query, $conn);
+		$question_info=mysql_fetch_array($question_info_result);
+
+		if ($question_info["reply"]==0)
+		{
+			$reply=$question_info["num"];
+		}
+		else if ($question_info["reply"]!=0)
+		{
+			$update_reply_value=abs($question_info["reply"])*(-1);
+			$update_query="update board set reply=".$update_reply_value." where num=".$question_num;
+			mysql_query($update_query, $conn);
+
+			$reply=$question_info["num"];
+		}
+
+		$max_num_query="select max(num) as tcount from board";
+		$max_num_result=mysql_query($max_num_query, $conn);
+		$max_num_list=mysql_fetch_array($max_num_result);
+		$num=$max_num_list["tcount"]+1;
+
+		if($addfile_name!="")
+		{
+			if(upload_file($board_save_dir, $addfile, $addfile_name, $num))
+			{
+				
+				$query="insert into board(num, root, reply, title, email, content, writer, password, filename, wdate, wtime, connect_ip, count) values(".$num.", ".$question_info["root"].", ".$reply.", '".$title."', '".$email."', '".$content."', '".$writer."', '".$pwd."', '".$addfile_name."', now(), now(), '".getenv("REMOTE_ADDR")."', 0)";
+				
+
+				mysql_query($query, $conn);
+			}
+		}
+		else
+		{
+			$query="insert into board(num, root, reply, title, email, content, writer, password, filename, wdate, wtime, connect_ip, count) values(".$num.", ".$question_info["root"].", ".$reply.", '".$title."', '".$email."', '".$content."', '".$writer."', '".$pwd."', '', now(), now(), '".getenv("REMOTE_ADDR")."', 0)";
+
+			mysql_query($query, $conn);
+		}
+
+
+	}
+	elseif ($mode=="update")
+	{
+		$pwd_query="select password from board where num=".$num;
+		$pwd_result=mysql_query($pwd_query, $conn);
+		$pwd_list=mysql_fetch_array($pwd_result);
+		$old_pwd=$pwd_list["password"];
+
+		if ($old_pwd!=$pwd)
+		{
+			print "<script> alert('암호가 틀립니다. 다시 확인을......'); history.back(-1); </script>";
+		    exit;
+		}
+		
+		if($addfile_name!="")
+		{
+			$filename_query="select filename from board where num=".$num;
+			$filename_result=mysql_query($filename_query, $conn);
+			$filename_list=mysql_fetch_array($filename_result);
+			$filename=$filename_list["filename"];
+			
+			if ($filename!="") unlink($board_save_dir."/".$num."_".$filename);
+
+			if(upload_file($board_save_dir, $addfile, $addfile_name, $num))
+			{
+				$query="update board set title='".$title."', email='".$email."', writer='".$writer."', content='".$content."', filename='".$addfile_name."', connect_ip='".getenv("REMOTE_ADDR")."' where num=".$num;
+
+				$query_res=mysql_query($query, $conn);
+			}
+		}
+		else
+		{
+			$query="update board set title='".$title."', email='".$email."', writer='".$writer."', content='".$content."', connect_ip='".getenv("REMOTE_ADDR")."' where num=".$num;
+
+			$query_res=mysql_query($query, $conn);
+		}
+	}
+	elseif ($mode=="delete")
+	{
+		$pwd_query="select password from board where num=".$num;
+		$pwd_result=mysql_query($pwd_query, $conn);
+		$pwd_list=mysql_fetch_array($pwd_result);
+		$old_pwd=$pwd_list["password"];
+
+		if ($old_pwd!=$pwd)
+		{
+			print "<script>
+						alert('암호가 틀립니다. 다시 확인을......');
+						history.back(-1);
+					</script>";
+			exit;
+
+		}
+
+		else
+		{
+
+			$filename_query="select filename from board where num=".$num;
+			$filename_result=mysql_query($filename_query, $conn);
+			$filename_list=mysql_fetch_array($filename_result);
+			$filename=$filename_list["filename"];
+			
+			if ($filename!="") unlink($board_save_dir."/".$num."_".$filename);		
+
+			$del_query="delete from board where num=".$num;
+			mysql_query($del_query, $conn);
+		}
+	}
+	
+	print "<meta http-equiv='refresh' content='0; url=bd.html'>";
+?>
