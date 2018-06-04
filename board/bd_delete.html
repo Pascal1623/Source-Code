@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="euc-kr">
-  <meta name="Generator" content="EditPlus¢ç">
+  <meta name="Generator" content="EditPlusï¿½">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>°Ô½Ã±Û º¸±â</title>
+  <title>ê²Œì‹œê¸€ ë³´ê¸°</title>
 	<?
 		include("include.inc");
 		$query = "select * from board where num=".$num;
@@ -22,30 +22,30 @@
  <body>
 	<table>
 	<tr width=690>
-	<td colspan=6 width=690 align=center height=50>°Ô½Ã±Û º¸±â</td>
+	<td colspan=6 width=690 align=center height=50>ê²Œì‹œê¸€ ë³´ê¸°</td>
 	</tr>
 	</table>
 	<table width=690 height=400 border='1' cellspacing=0 bordercolor="f0f0f0">
 	<tr width=640>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>±Û¾´ÀÌ</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ê¸€ì“´ì´</td>
 		<td width=100 colspan=2><? print $list[writer]; ?></td>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>ÀÌ¸ÞÀÏ</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ì´ë©”ì¼</td>
 		<td width=150 colspan=2><? print $list[email]; ?></td>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>Á¢¼ÓIP</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ì ‘ì†IP</td>
 		<td width=100 colspan=2><? print $list[connect_ip]; ?></td>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>Á¶È¸¼ö</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ì¡°íšŒìˆ˜</td>
 		<td width=100 colspan=2><? print $count; ?></td>
 	</tr>
 	<tr>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>Á¦¸ñ</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ì œëª©</td>
 		<td colspan=11><? print $list[title]; ?></td>
 	</tr>
-		<td width=60 height=280 bgcolor=58D3F7 align=center>³»¿ë</td>
+		<td width=60 height=280 bgcolor=58D3F7 align=center>ë‚´ìš©</td>
 		<td height=280 colspan=11><? print $list[content]; ?></td>
 	<tr>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>ÆÄÀÏ</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>íŒŒì¼</td>
 		<td colspan=5><? print $list[filename]; ?></td>
-		<td width=60 height=30 bgcolor=58D3F7 align=center>³¯Â¥</td>
+		<td width=60 height=30 bgcolor=58D3F7 align=center>ë‚ ì§œ</td>
 		<td colspan=5><? print $list[wtime]; ?></td>
 	</tr>
 	</table>
@@ -54,7 +54,7 @@
 		<tr>
 			<td align=center width=60 bgcolor=58D3F7>Password</td>
 			<td><input type=password name=pwd size=10 tabindex="1">
-			<input type=submit value='[È®ÀÎ]'>
+			<input type=submit value='[í™•ì¸]'>
 			</td>
 		</tr>
 	</form>
