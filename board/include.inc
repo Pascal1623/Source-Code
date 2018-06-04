@@ -4,12 +4,12 @@
 	mysql_select_db("webdb", $conn);
 	mysql_query("set names euckr");
 
-	$board_save_dir="./upload/board";   //	$board_save_dir="./upload/........ ¼­¹ö¿¡ uploadÇÒ Æú´õ Á¤ÀÇ";
+	$board_save_dir="./upload/board";   //	$board_save_dir="./upload/........ ì„œë²„ì— uploadí•  í´ë” ì •ì˜";
 
-// ÆäÀÌÁö´ç º¸¿©Áö´Â °Ô½Ã¹°ÀÇ °¹¼ö
+// í˜ì´ì§€ë‹¹ ë³´ì—¬ì§€ëŠ” ê²Œì‹œë¬¼ì˜ ê°¯ìˆ˜
 	$board_page_view_count=10;
 
-// file ¾÷·Îµå °ü·Ã ÇÕ¼ö
+// file ì—…ë¡œë“œ ê´€ë ¨ í•©ìˆ˜
 	function upload_file($saveDir,$addfile, $addfile_name, $num)
 	{
 		$dotpos=strpos($addfile_name,".");
@@ -20,7 +20,7 @@
 		      ||!strcmp($extension,"pl")||!strcmp($extension,"cgi")||!strcmp($extension,"asp")||!strcmp($extension,""))
 		{
 			echo "<script language='javascript'> ";
-			echo "alert('¾÷·Îµå°¡ ±İÁöµÈ Ã·ºÎÆÄÀÏ¸íÀÔ´Ï´Ù!'); ";
+			echo "alert('ì—…ë¡œë“œê°€ ê¸ˆì§€ëœ ì²¨ë¶€íŒŒì¼ëª…ì…ë‹ˆë‹¤!'); ";
 			echo "</script>";
 			echo "<meta http-equiv='refresh' content='0; url=javascript:history.back(-1)'>";
 			echo "</head>";
@@ -32,7 +32,7 @@
 		if($exist)
 		{
 		  echo "<script language='javascript'> ";
-		  echo "alert('¾÷·ÎµåÇÒ Ã·ºÎÆÄÀÏÀÇ ÆÄÀÏ¸íÀÌ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù!'); ";
+		  echo "alert('ì—…ë¡œë“œí•  ì²¨ë¶€íŒŒì¼ì˜ íŒŒì¼ëª…ì´ ì´ë¯¸ ì¡´ì¬í•©ë‹ˆë‹¤!'); ";
 		  echo "</script>";
 		  echo "<meta http-equiv='refresh' content='0; url=javascript:history.back(-1)'>";
 		  echo "</head>";
@@ -42,7 +42,7 @@
 		if(!copy($addfile,$saveDir."/".$num."_".$full_filename.".".$extension))
 		{
 		  echo "<script language='javascript'> ";
-		  echo "alert('Ã·ºÎÆÄÀÏÀ» ¾÷·ÎµåÇÏ´Âµ¥ ½ÇÆĞÇÏ¿´½À´Ï´Ù!'); ";
+		  echo "alert('ì²¨ë¶€íŒŒì¼ì„ ì—…ë¡œë“œí•˜ëŠ”ë° ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤!'); ";
 		  echo "</script>";
 		  echo "<meta http-equiv='refresh' content='0; url=javascript:history.back(-1)'>";
 		  echo "</head>";
@@ -53,7 +53,7 @@
 	}
 
 
-// °Ô½ÃÆÇ List Ãâ·Â ÇÔ¼ö
+// ê²Œì‹œíŒ List ì¶œë ¥ í•¨ìˆ˜
 
 	function Sub_List($num, $depth, $now_num, $table_name, $today)
 	{
