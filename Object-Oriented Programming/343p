@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+template <class T>
+class CStack
+{
+private:
+	T m_Data[100];
+	int m_iCount;
+	
+public:
+	CStack()
+	{
+		m_iCount=0;
+	}
+	
+	void Push(T x)
+	{
+		if(m_iCount==100){
+			printf("stack overflow! \n");
+			return;
+		}
+		
+		m_iCount++;
+		m_Data[m_iCount]=x;
+	}
+	
+	T Pop()
+	{
+		if(m_iCount==0){
+			printf("stack underflow \n");
+			return -1;
+		}
+		
+		T data;
+		data=m_Data[m_iCount];
+		m_iCount--;
+		
+		return data;
+	}
+	
+	int GetCount()
+	{
+		return m_iCount;
+	}
+};
+
+int main()
+{
+	CStack<int> gildong;
+	gildong.Push(10);
+	gildong.Push(20);
+	
+	printf("%d \n", gildong.Pop());
+	printf("%d \n", gildong.Pop());
+}
