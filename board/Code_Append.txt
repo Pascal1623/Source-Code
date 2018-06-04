@@ -1,8 +1,8 @@
 <style type="text/css">
-  BODY       { font-family: µ¸À½,±¼¸²; font-size: 12px; color: black }
-  TD         { font-family: µ¸À½,±¼¸²; font-size: 12px; color: black; line-height: 160%}
-  a          { font-family: µ¸À½,±¼¸²; font-size: 12px; color: black; text-decoration: none}
-  a:active   { font-family: µ¸À½,±¼¸²; font-size: 12px; color: #FF3333; text-decoration: none}
+  BODY       { font-family: ë‹ìŒ,êµ´ë¦¼; font-size: 12px; color: black }
+  TD         { font-family: ë‹ìŒ,êµ´ë¦¼; font-size: 12px; color: black; line-height: 160%}
+  a          { font-family: ë‹ìŒ,êµ´ë¦¼; font-size: 12px; color: black; text-decoration: none}
+  a:active   { font-family: ë‹ìŒ,êµ´ë¦¼; font-size: 12px; color: #FF3333; text-decoration: none}
   A:hover    { text-decoration ; color:#ff9999} 
 .font1 {  font-size: 11px; color: #333333; font-family: "Geneva", "Arial", "Helvetica", "san-serif"}
 </style>
@@ -12,17 +12,17 @@
     {
 	if (from.writer.value=="")
 	{
-		alert ("±Û¾´ÀÌ¸¦ ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+		alert ("ê¸€ì“´ì´ë¥¼ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 		return;
 	}
 	if (from.title.value=="")
 	{
-		alert ("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+		alert ("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 		return;
 	}
 	if (from.pwd.value=="")
 	{
-		alert("Password¸¦ ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+		alert("Passwordë¥¼ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 		return;
 	}
 	from.submit();
