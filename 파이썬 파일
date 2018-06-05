@@ -1,0 +1,15 @@
+class My:
+    iX=0
+    iY=0
+
+    def Assign(self, a, b):
+        self.iX=a
+        self.iY=b
+
+    def Add(self):
+        return self.iX+self.iY
+
+gildong=My()
+gildong.Assign(2, 3)
+iResult=gildong.Add()
+print("Sum=", iResult)
