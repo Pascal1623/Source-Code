@@ -41,73 +41,73 @@
 
 
 ?>
-		<br><br>
-		<table border=0 cellpadding=0 cellspacing=0 width=630>
-			<tr height=26 align=center bgcolor=f0f8ff>
-				<td width=57>num</td>
-				<td width=300>제목</td>
-				<td width=110>글쓴이</td>
-				<td width=69>작성일자</td>
-				<td width=59>조회수</td>
-			</tr>
-				<?php
-					$i=0;
-					$j=0;
-					// 리스트 출력 부분
-					while($list=mysql_fetch_array($list_result))
+	<br><br>
+	<table border=0 cellpadding=0 cellspacing=0 width=630>
+		<tr height=26 align=center bgcolor=f0f8ff>
+			<td width=57>num</td>
+			<td width=300>제목</td>
+			<td width=110>글쓴이</td>
+			<td width=69>작성일자</td>
+			<td width=59>조회수</td>
+		</tr>
+		<?php
+			$i=0;
+			$j=0;
+			// 리스트 출력 부분
+			while($list=mysql_fetch_array($list_result))
+			{
+				$i=$i+1;
+
+				if (($page-1)*$board_page_view_count<$i)
+				{
+					$j=$j+1;
+					print "<tr height=16>
+								<td align=center>".$list["root"]."</td>";
+
+					print "<td><a href=bd_view.html?num=".$list["num"].">".$list["title"]."</a></td>";
+
+					print "<td align=center>".$list["writer"]."</td>";
+
+					print "<td align=center>".$list["wdate"]."</td>";
+
+					print "<td align=center>".$list["count"]."</td></tr>";
+
+					print "<tr><td colspan=5><hr></td></tr>";	
+
+					Sub_List($list["num"], 1, $list["num"], board, $today);
+
+					if ($j == $board_page_view_count && ($page-1)*$board_page_view_count<=$i)
 					{
-						$i=$i+1;
-
-						if (($page-1)*$board_page_view_count<$i)
-						{
-							$j=$j+1;
-							print "<tr height=16>
-										<td align=center>".$list["root"]."</td>";
-
-							print "<td><a href=bd_view.html?num=".$list["num"].">".$list["title"]."</a></td>";
-
-							print "<td align=center>".$list["writer"]."</td>";
-
-							print "<td align=center>".$list["wdate"]."</td>";
-
-							print "<td align=center>".$list["count"]."</td></tr>";
-
-							print "<tr><td colspan=5><hr></td></tr>";	
-
-							Sub_List($list["num"], 1, $list["num"], board, $today);
-
-							if ($j == $board_page_view_count && ($page-1)*$board_page_view_count<=$i)
-							{
-								print "<tr><td colspan=5><hr></td></tr>";				
-							}
-						}
-						if ($j==$board_page_view_count) break;
+						print "<tr><td colspan=5><hr></td></tr>";				
 					}
-					if ($j<$board_page_view_count && $j!=0)
-					{
+				}
+				if ($j==$board_page_view_count) break;
+			}
+			if ($j<$board_page_view_count && $j!=0)
+			{
 
-						for ($a=$j; $a<$board_page_view_count; $a++)
-						{
-							if ($a+1<$board_page_view_count)
-							{
-								print "<tr height=16><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
-								print "<tr><td colspan=5 align=center><hr></td></tr>";
-							}
-							else
-							{
-								print "<tr height=16><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
-								print "<tr><td colspan=5 align=center><hr></td></tr>";				
-							}
-						}
-					}
-
-					if ($j==0)
+				for ($a=$j; $a<$board_page_view_count; $a++)
+				{
+					if ($a+1<$board_page_view_count)
 					{
-						print "<tr height=300><td colspan=5 align=center>.......... 등록된 내용이 없습니다 ..........</td></tr>";
+						print "<tr height=16><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
 						print "<tr><td colspan=5 align=center><hr></td></tr>";
 					}
+					else
+					{
+						print "<tr height=16><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
+						print "<tr><td colspan=5 align=center><hr></td></tr>";				
+					}
+				}
+			}
 
-				?>
+			if ($j==0)
+			{
+				print "<tr height=300><td colspan=5 align=center>.......... 등록된 내용이 없습니다 ..........</td></tr>";
+				print "<tr><td colspan=5 align=center><hr></td></tr>";
+			}
+
+		?>
 		</table>
 		<br>
 		<table border=0 cellpadding=0 cellspacing=0 width=630>
@@ -126,84 +126,84 @@
 					?>					
 				</td>
 				<td width=300>
-							<?php
-								// 페이지 목록 출력부분
+					<?php
+						// 페이지 목록 출력부분
 
-								if ($i==($page*$board_page_view_count) || $page>1)
+						if ($i==($page*$board_page_view_count) || $page>1)
+						{
+							for ($i=(floor(($page-1)/$board_page_view_count)*$board_page_view_count+1); $i<=((floor(($page-1)/$board_page_view_count))+1)*$board_page_view_count; $i++)
+							{
+								if ($i==$totalCount) 
 								{
-									for ($i=(floor(($page-1)/$board_page_view_count)*$board_page_view_count+1); $i<=((floor(($page-1)/$board_page_view_count))+1)*$board_page_view_count; $i++)
+									if ($i==$page)
 									{
-										if ($i==$totalCount) 
+										print "<font color=red>".$i."</font>";
+									}
+									else
+									{
+										if ($smethod!="" && $sstring!="")
 										{
-											if ($i==$page)
-											{
-												print "<font color=red>".$i."</font>";
-											}
-											else
-											{
-												if ($smethod!="" && $sstring!="")
-												{
-													print "<a href=bd.html?&page=".$i."&smethod=".$smethod."&sstring=".$sstring.">".$i."</a>";
-												}
-												else print "<a href=bd.html?&page=".$i."><font color=#006699>".$i."</font></a>";
-											}
-
-											$i=$i+1;
-											break;
+											print "<a href=bd.html?&page=".$i."&smethod=".$smethod."&sstring=".$sstring.">".$i."</a>";
 										}
-										else
+										else print "<a href=bd.html?&page=".$i."><font color=#006699>".$i."</font></a>";
+									}
+
+									$i=$i+1;
+									break;
+								}
+								else
+								{
+									if ($i==$page) 
+										print  "<font color=red>".$i."</font> | ";
+									else 
+									{
+										if ($smethod!="" && $sstring!="")
+										{	
+											print "<a href=bd.html?page=".$i."&smethod=".$smethod."&sstring=".$sstring."><font color=#006699>".$i."</font></a> | ";
+										}
+										else 
 										{
-											if ($i==$page) 
-												print  "<font color=red>".$i."</font> | ";
-											else 
-											{
-												if ($smethod!="" && $sstring!="")
-												{	
-													print "<a href=bd.html?page=".$i."&smethod=".$smethod."&sstring=".$sstring."><font color=#006699>".$i."</font></a> | ";
-												}
-												else 
-												{
-													print "<a href=bd.html?page=".$i."><font color=#006699>".$i."</font></a> | ";
-												}
-											}
+											print "<a href=bd.html?page=".$i."><font color=#006699>".$i."</font></a> | ";
 										}
 									}
 								}
-								else if($i>0) print "<font color=red>1 </font> | ";
-							?>
+							}
+						}
+						else if($i>0) print "<font color=red>1 </font> | ";
+					?>
 
 				</td>
 				<td width=80>
-						<?php
-							// 다음 페이지목록 링크
+					<?php
+						// 다음 페이지목록 링크
 
-							$i=$i-1;
-							if ($i<$totalCount && $i>0)
+						$i=$i-1;
+						if ($i<$totalCount && $i>0)
+						{
+							if ($smethod!="" && $sstring!="")
 							{
-								if ($smethod!="" && $sstring!="")
-								{
-									print "<a href=bd.html?page=".($i+1)."&smethod=".$smethod."&sstring=".$sstring.">▶</a>";
-								}
-								else print "<a href=bd.html?page=".($i+1).">▶</a>";
+								print "<a href=bd.html?page=".($i+1)."&smethod=".$smethod."&sstring=".$sstring.">▶</a>";
 							}
-						?>
+							else print "<a href=bd.html?page=".($i+1).">▶</a>";
+						}
+					?>
 				</td>
 				<td width=320 valign=center>
 					<form name=search method=post action=bd.html>
-				    <table border=0 cellspacing=3 cellpadding=0>
+				    	<table border=0 cellspacing=3 cellpadding=0>
 					  <tr>
 					    <td>
-						  <select name=smethod class="formbox">
-								<?php
-									if ($smethod=="title") print "<option value=title selected>Title</option>";
-										else print "<option value=title>Title</option>";
-									if ($smethod=="content") print "<option value=content selected>Content</option>";
-										else print "<option value=content>Content</option>";
-									if ($smethod=="writer") print "<option value=writer selected>Writer</option>";
-										else print "<option value=writer>Writer</option>";
-								?>		
-						  </select>
-						 </td>
+						<select name=smethod class="formbox">
+							<?php
+								if ($smethod=="title") print "<option value=title selected>Title</option>";
+									else print "<option value=title>Title</option>";
+								if ($smethod=="content") print "<option value=content selected>Content</option>";
+									else print "<option value=content>Content</option>";
+								if ($smethod=="writer") print "<option value=writer selected>Writer</option>";
+									else print "<option value=writer>Writer</option>";
+							?>		
+						</select>
+						</td>
 						 <td><input type=text name=sstring size=10 value="<?php print $sstring ?>" style="border: 1px dashed" tabindex="1"></td>
 						 <td><a href="javascript:document.search.submit()">[검색]</a></td>
 					</tr></table></form>
