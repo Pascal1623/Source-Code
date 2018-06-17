@@ -1,0 +1,59 @@
+/*생성자와 소멸자
+생성자 함수는 객체가 생성될 때 자동으로 실행되는 멤버 함수이고, 소멸자
+함수는 객체가 제거될 때 자동으로 실행되는 멤버 함수입니다. 작성하는
+방법은 간단합니다. 다음과 같이 클래스 이름과 동일한 함수를 작성합니다.*/
+#include <stdio.h>
+
+class CPoint
+{
+	int m_iX;
+	int m_iY;
+
+public:
+	CPoint()
+	{
+		m_iX = 0;
+		m_iY = 0;
+	}
+
+	~CPoint()
+	{
+		printf("소멸자 함수가 실행되었습니다!\n");
+	}
+
+	void Assign(int x, int y);
+	int Add();
+};
+
+void CPoint::Assign(int x, int y)
+{
+	m_iX = x;
+	m_iY = y;
+}
+
+int CPoint::Add()
+{
+	return m_iX + m_iY;
+}
+
+int main()
+{
+	CPoint gildong; //(A)
+	int iResult;
+
+	gildong.Assign(2, 3);
+
+	iResult = gildong.Add(); /*F11을 눌러서 함수 안으로 들어갔다가
+	F10을 눌러서 함수 밖으로 빠져나온 다음 F11을 누를 것.*/
+
+	printf("두 개의 값을 더한 결과: %d\n", iResult);
+	/*디버깅할 때 printf함수에서 F11을 누르지 말고 F10을
+	누를 것.*/
+
+	return 0; //여기서 F11 키를 누릅니다. 그러면 소멸자 함수 안으로 들어갑니다.
+}
+
+/*gildong 객체를 정의하는 곳(A)에 중단점을 찍고 생성자와 소멸자가
+언제 실행되는지 직접 디버깅 방법으로 확인해 봅니다. 디버깅하기 전에
+다음과 같이 gildong 객체를 main 함수 안으로 옮깁니다. 지역 변수로
+정의한 것으로 이제 이 객체는 main 함수가 실행될 경우에 생성되겠지요.*/
