@@ -1,0 +1,23 @@
+
+class Saram{
+int iX;
+int iY;
+public void Assign()
+    {
+        int iX=2;
+        int iY=3;
+    }
+    public int Add()
+    {
+        int imsi=iX+iY;
+        return imsi;
+    }
+
+    public static void Main()
+{
+    Saram gildong=new Saram();
+    gildong.Assign();
+    int iResult=gildong.Add();
+    System.Console.WriteLine("Sum = "+iResult);
+
+}
