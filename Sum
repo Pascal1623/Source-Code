@@ -1,0 +1,26 @@
+#include <stdio.h>
+class Saram{
+    int iX;
+    int iY;
+public:
+    void Assign()
+    {
+        int iX=2;
+        int iY=3;
+    }
+    int Add()
+    {
+        int imsi=iX+iY;
+        return imsi;
+    }
+};
+Saram gildong;
+int main()
+{
+    
+    gildong.Assign();
+    int iResult=gildong.Add();
+    printf("Sum=%d\n", gildong.Add());
+
+    return 0;
+}
