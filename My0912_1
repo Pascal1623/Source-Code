@@ -5,8 +5,8 @@ class Saram{
 public:
     void Assign()
     {
-        int iX=2;
-        int iY=3;
+        iX=2;
+        iY=3;
     }
     int Add()
     {
