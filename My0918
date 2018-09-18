@@ -1,0 +1,24 @@
+using System;
+using XXX;
+namespace XXX{
+    class Point{
+        int iX;
+        int iY;
+        public void Assign(){
+            iX=2;
+            iY=3;
+        }
+        public int Add(){
+            return iX+iY;
+        }
+    }
+}
+class My
+{
+    public static void Main(){
+        Point gildong=new Point();
+        gildong.Assign();
+        int iResult=gildong.Add();
+        Console.WriteLine("Sum: "+iResult);
+    }
+}
