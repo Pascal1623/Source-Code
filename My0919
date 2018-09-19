@@ -1,0 +1,41 @@
+class Point{
+    protected int iX;
+    protected int iY;
+    public void Assign(int a, int b){
+        iX=a;
+        iY=b;
+    }
+    public int Add(){
+        int imsi;
+        imsi=iX+iY;
+        return imsi;
+    }
+}
+class Circle : Point{
+    int iReadius;
+    public void SetRadius(int r){
+        iReadius=r;
+    }
+    public double Area(){
+        return 3.14*iReadius*iReadius;
+    }
+    public void Move(int a, int b){
+        iX=iX+a;
+        iY=iY+b;
+    }
+}
+class My {
+    
+    public static void Main(){
+        Point gildong=new Point();
+        gildong.Assign(2, 3);
+        int iResult=gildong.Add();
+        System.Console.WriteLine("Sum = "+iResult);
+
+        Circle younja=new Circle();
+        younja.Assign(7, 8);
+        younja.SetRadius(10);
+        double Area=younja.Area();
+        System.Console.WriteLine("원의 면적은 "+ Area+"입니다.");
+    }
+}
