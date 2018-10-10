@@ -5,3 +5,5 @@ Module Test
 End Module
 
 //vbc.my.mvb
+//my.exe
+//ildasm my.exe
