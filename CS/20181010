@@ -1,0 +1,5 @@
+class my{
+	public void set(){
+		System.Console.WriteLine("Hello World!");
+	}
+}
