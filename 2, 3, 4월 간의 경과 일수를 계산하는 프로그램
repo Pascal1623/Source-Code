@@ -1,0 +1,132 @@
+import java.util.Scanner;
+
+public class month2019 {
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+
+        int days;
+        int month1;
+        int days1;
+        int month2;
+        int days2;
+        int Feb=28;
+        int Mar=31;
+
+        System.out.println("첫 번째 날짜 입력");
+
+        System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+        month1=scan.nextInt();
+        if(month1<2||month1>4)
+        {
+            System.out.println("오류입니다. 다시 입력하세요.");
+            System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+            month1=scan.nextInt();
+            if(month1<2||month1>4)
+            {
+                System.out.println("오류입니다. 다시 입력하세요.");
+                System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+                month1=scan.nextInt();
+            }
+        }
+
+        System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월 30일 이하) : ");
+        days1=scan.nextInt();
+
+        // 일 수 오류 표현 수정
+        if((month1==2&&days1>28)||(month1==3&&days1>31)||(month1==4&&days1>30))
+        {
+            System.out.println("오류입니다. 다시 입력하세요.");
+            System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월 30일은 이하) : ");
+            days1=scan.nextInt();
+            if((month1==2&&days1>28)||(month1==3&&days1>31)||(month1==4&&days1>30))
+            {
+                System.out.println("오류입니다. 다시 입력하세요.");
+                System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월 30일은 이하) : ");
+            }
+        }
+
+        System.out.println("첫 번째로 입력한 날짜는 "+month1+"월 "+days1+"일입니다.");
+
+        System.out.println(" ");
+
+        System.out.println("두 번째 날짜 입력");
+
+        System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+        month2=scan.nextInt();
+        if(month2<2||month2>4)
+        {
+            System.out.println("오류입니다. 다시 입력하세요.");
+            System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+            month2=scan.nextInt();
+            if(month2<2||month2>4)
+            {
+                System.out.println("오류입니다. 다시 입력하세요.");
+                System.out.print("몇 월인가요? (2월~4월만 입력) : ");
+                month2=scan.nextInt();
+            }
+        }
+
+        System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월은 30일 이하) : ");
+        days2=scan.nextInt();
+        if((month2==2&&days2>28)||(month2==3&&days2>31)||(month2==4&&days2>30)){
+            System.out.println("오류입니다. 다시 입력하세요.");
+            System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월 30일은 이하) : ");
+            days2=scan.nextInt();
+            if((month2==2&&days2>28)||(month2==3&&days2>31)||(month2==4&&days2>30)){
+                System.out.println("오류입니다. 다시 입력하세요.");
+                System.out.print("몇 일인가요? (2월은 28일 이하, 3월은 31일 이하, 4월 30일은 이하) : ");
+            }
+        }
+
+        System.out.println("두 번째로 입력한 날짜는 "+month2+"월 "+days2+"일입니다.");
+
+        if(month1==month2){
+            if(days1>days2){
+                days=days1-days2;
+                System.out.println(" ");
+                System.out.println(month2+"월 "+days2+"일부터 "+month1+"월 "+days1+"일까지 "+days+"일 경과했습니다.");
+            }
+            else{
+                days=days2-days1;
+                System.out.println(" ");
+                System.out.println(month1+"월 "+days1+"일부터 "+month2+"월 "+days2+"일까지 "+days+"일 경과했습니다.");
+            }
+        }
+
+        else if(month1>month2){
+            if(month1==3&&month2==2){
+                days=Feb-days1+days2;
+                System.out.println(" ");
+                System.out.println(month2+"월 "+days2+"일부터 "+month1+"월 "+days1+"일까지 "+days+"일 경과했습니다.");
+            }
+            else if(month1==4&&month2==3){
+                days=Mar-days1+days2;
+                System.out.println(" ");
+                System.out.println(month2+"월 "+days2+"일부터 "+month1+"월 "+days1+"일까지 "+days+"일 경과했습니다.");
+            }
+            else{
+                days=Feb+Mar-days1+days2;
+                System.out.println(" ");
+                System.out.println(month2+"월 "+days2+"일부터 "+month1+"월 "+days1+"일까지 "+days+"일 경과했습니다.");
+            }
+        }
+
+        else {
+            if(month1==2&&month2==3){
+                days=Feb-days1+days2;
+                System.out.println(" ");
+                System.out.println(month1+"월 "+days1+"일부터 "+month2+"월 "+days2+"일까지 "+days+"일 경과했습니다.");
+            }
+            else if(month1==3&&month2==4){
+                days=Mar-days1+days2;
+                System.out.println(" ");
+                System.out.println(month1+"월 "+days1+"일부터 "+month2+"월 "+days2+"일까지 "+days+"일 경과했습니다.");
+            }
+            else{
+                days=Feb+Mar-days1+days2;
+                System.out.println(" ");
+                System.out.println(month1+"월 "+days1+"일부터 "+month2+"월 "+days2+"일까지 "+days+"일 경과했습니다.");
+            }
+        }
+    }
+}
