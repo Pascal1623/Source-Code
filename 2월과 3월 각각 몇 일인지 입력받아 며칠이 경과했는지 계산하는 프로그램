@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class FebMar {
+    public static void main(String args[]){
+        Scanner scan = new Scanner(System.in);
+
+        int Days;
+        int FebDay;
+        int MarDay;
+        int Feb=28; // 2월은 28일까지 있다. FebDay는 이 변수와 전혀 다른 변수이다.
+
+        System.out.print("2월 몇 일인가요? : ");
+        FebDay=scan.nextInt();
+
+        while(FebDay<1||FebDay>28)
+        {
+            System.out.println("오류입니다. 다시 입력해주세요.");
+            System.out.print("2월 몇 일인가요? : ");
+            FebDay=scan.nextInt();
+        }
+
+        System.out.println("2월 "+FebDay+"일입니다.");
+        System.out.println(" ");
+
+        System.out.print("3월 몇 일인가요? : ");
+        MarDay=scan.nextInt();
+
+        while (MarDay<1||MarDay>31)
+        {
+            System.out.println("오류입니다. 다시 입력해주세요.");
+            System.out.print("3월 몇 일인가요? : ");
+            MarDay=scan.nextInt();
+        }
+
+        System.out.println("3월 "+MarDay+"일입니다.");
+        System.out.println(" ");
+
+        Days=Feb-FebDay+MarDay;
+
+        System.out.println("2월 "+FebDay+"일부터 3월 "+MarDay+"일까지 "+Days+"일이 경과했습니다.");
+    }
+}
