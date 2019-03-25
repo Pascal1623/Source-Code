@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class MarApr {
+    public static void main(String args[])
+    {
+        Scanner scan = new Scanner(System.in);
+
+        int Days;
+        int Mar=31;
+        int Mardays;
+        int Aprdays;
+
+        while (true)
+        {
+            System.out.print("3월 몇 일인가요? (프로그램을 종료하려면 0을 입력하세요.) : ");
+            Mardays=scan.nextInt();
+            if (Mardays==0)
+            {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+
+            while (Mardays<1||Mardays>31)
+            {
+                System.out.println("오류입니다. 다시 입력해주세요.");
+                System.out.print("3월 몇 일인가요? (프로그램을 종료하려면 0을 입력하세요.) : ");
+                Mardays=scan.nextInt();
+                if (Mardays==0)
+                {
+                    System.out.println("프로그램을 종료합니다.");
+                    break;
+                }
+            }
+
+            System.out.println("3월 "+Mardays+"일입니다.");
+            System.out.println(" ");
+
+            System.out.print("4월 몇 일인가요? (프로그램을 종료하려면 0을 입력하세요.) : ");
+            Aprdays=scan.nextInt();
+
+            while (Aprdays<1||Aprdays>30)
+            {
+                System.out.println("오류입니다. 다시 입력해주세요.");
+                System.out.print("4월 몇 일인가요? (프로그램을 종료하려면 0을 입력하세요.): ");
+                Aprdays=scan.nextInt();
+                if (Aprdays==0)
+                {
+                    System.out.println("프로그램을 종료합니다.");
+                    break;
+                }
+            }
+
+            System.out.println("4월 "+Aprdays+"일입니다.");
+            System.out.println(" ");
+
+            Days=Mar-Mardays+Aprdays;
+
+            System.out.println("3월 "+Mardays+"일부터 4월 "+Aprdays+"일까지 "+Days+"일이 경과했습니다.");
+            System.out.println(" ");
+        }
+    }
+}
