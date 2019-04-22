@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class DAY {
+    int x, y, z;
+
+    public DAY() {
+        x = 0; y = 0; z = 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int 월;
+        int[] 월말;
+        int 일;
+        int 경과일수 = 0;
+        월말 = new int[]{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int x, y;
+        DAY d = new DAY();
+        String[] 요일 = new String[]{"월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"}; //1월 1일은 화요일
+        
+        System.out.println("몇 월인가요?");
+        월 = sc.nextInt();
+        System.out.println("몇 일인가요?");
+        일 = sc.nextInt();
+        for (int i = 0; i < 월; i++) {
+            경과일수 += 월말[i];
+        }
+        경과일수 += 일;
+    }
+}
