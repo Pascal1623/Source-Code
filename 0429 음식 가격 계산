@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class FOOD {
+
+    public String[] name = {"짜장면", "짬뽕", "탕수육", "볶음밥", "짜장밥"};
+
+    public int[] price = {5000, 6000, 15000, 7000, 7000, 0};
+
+    public void 메뉴() {
+        System.out.println("짜장면 5000원");
+        System.out.println("짬뽕 6000원");
+        System.out.println("탕수육 15000원");
+        System.out.println("볶음밥 7000원");
+        System.out.println("짜장밥 7000원");
+    }
+
+    public int 음식값1(int 그릇1) {
+        return price[5] = price[0] * 그릇1;
+    }
+
+    public int 음식값2(int 그릇2) {
+        return price[5] = price[1] * 그릇2;
+    }
+
+    public int 음식값3(int 그릇3) {
+        return price[5] = price[2] * 그릇3;
+    }
+
+    public int 음식값4(int 그릇4) {
+        return price[5] = price[3] * 그릇4;
+    }
+
+    public int 음식값5(int 그릇5) {
+        return price[5] = price[4] * 그릇5;
+    }
+
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        FOOD 중식 = new FOOD();
+        중식.메뉴();
+
+        System.out.print("짜장면을 몇 그릇 주문하시겠습니까? : ");
+        int 그릇1 = sc.nextInt();
+        중식.음식값1(그릇1);
+        System.out.println("짜장면 " + 그릇1 + "은" + 중식.음식값1(그릇1) + "원입니다.");
+
+        System.out.print("짬뽕을 몇 그릇 주문하시겠습니까? : ");
+        int 그릇2 = sc.nextInt();
+        중식.음식값2(그릇2);
+        System.out.println("짬뽕 " + 그릇2 + "은" + 중식.음식값2(그릇2) + "원입니다.");
+
+        System.out.print("탕수육을 몇 그릇 주문하시겠습니까? : ");
+        int 그릇3 = sc.nextInt();
+        중식.음식값3(그릇3);
+        System.out.println("탕수육 " + 그릇3 + "은" + 중식.음식값3(그릇3) + "원입니다.");
+
+        System.out.print("볶음밥을 몇 그릇 주문하시겠습니까? : ");
+        int 그릇4 = sc.nextInt();
+        중식.음식값4(그릇4);
+        System.out.println("탕수육 " + 그릇4 + "은" + 중식.음식값4(그릇4) + "원입니다.");
+
+        System.out.print("짜장밥을 몇 그릇 주문하시겠습니까? : ");
+        int 그릇5 = sc.nextInt();
+        중식.음식값5(그릇5);
+        System.out.println("탕수육 " + 그릇5 + "은" + 중식.음식값5(그릇5) + "원입니다.");
+
+        int 합계 = 중식.음식값1(그릇1) + 중식.음식값2(그릇2) + 중식.음식값3(그릇3) + 중식.음식값4(그릇4) + 중식.음식값5(그릇5);
+        System.out.print("주문하신 음식의 값은 " + 합계 + "입니다.");
+    }
+}
