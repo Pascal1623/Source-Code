@@ -20,6 +20,5 @@ public class 계산{
 
     public int 짜장밥(int 그릇5) {
         return price[5] = price[4] * 그릇5;
-
     }
 }
