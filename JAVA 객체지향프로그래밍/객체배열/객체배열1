@@ -1,0 +1,25 @@
+// 생성자 메소드가 없는 배열 예제 프로그램
+
+public class c객체배열 {
+    private int 변수;
+
+    public void 자료_설정(int 값){변수=값;}
+
+    public int 자료_얻기(){return 변수;}
+
+    static public void main(String[] args){
+        c객체배열[] a객체배열=new c객체배열[3];
+
+        a객체배열[0]=new c객체배열();
+        a객체배열[1]=new c객체배열();
+        a객체배열[2]=new c객체배열();
+
+        a객체배열[0].자료_설정(10);
+        a객체배열[1].자료_설정(20);
+        a객체배열[2].자료_설정(30);
+
+        System.out.println("a객체배열[0] : "+a객체배열[0].자료_얻기());
+        System.out.println("a객체배열[1] : "+a객체배열[1].자료_얻기());
+        System.out.println("a객체배열[2] : "+a객체배열[2].자료_얻기());
+    }
+}
