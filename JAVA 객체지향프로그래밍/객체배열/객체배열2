@@ -1,0 +1,23 @@
+//매개변수가 없는 생성자 메소드를 가지는 객체 배열 예
+
+public class c객체배열_2 {
+    private int 변수;
+
+    c객체배열_2(){변수=5;}
+
+    public void 자료_설정(int 값) {변수=값;}
+
+    public int 자료_얻기(){return 변수;}
+
+    static public void main(String[] args){
+        c객체배열_2[] a객체배열=new c객체배열_2[2];
+
+        a객체배열[0]=new c객체배열_2();
+        a객체배열[1]=new c객체배열_2();
+
+        a객체배열[1].자료_설정(30);
+
+        System.out.println("a객체배열[0] : "+a객체배열[0].자료_얻기());
+        System.out.println("a객체배열[1] : "+a객체배열[1].자료_얻기());
+    }
+}
